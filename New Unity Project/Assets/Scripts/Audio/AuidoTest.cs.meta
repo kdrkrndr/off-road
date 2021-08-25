@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: af307cd05f13c324f8f95ad1e779b329
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - buttonClickSFX: {fileID: 8300000, guid: 2ea2527f1232e00458a9dd76853e7e60, type: 3}
+  - music1: {fileID: 8300000, guid: 7a907bc643af05445a6a0bcede0f1695, type: 3}
+  - music2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
