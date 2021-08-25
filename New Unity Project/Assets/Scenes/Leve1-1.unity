@@ -5181,7 +5181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: ShapeModule.type
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: RotationModule.x.minMaxState
@@ -5225,7 +5225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -5246,6 +5246,30 @@ PrefabInstance:
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: stopAction
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_RenderMode
@@ -15855,12 +15879,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f3f39dcb1e083438f1a88f28d08e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
-  maxAcceleration: 0
-  sizeAcceleration: 150
-  lifeAcceleration: 150
-  sizeVelocity: 15
-  lifeVelocity: 15
+  maxSpeed: 100
+  maxAcceleration: 60
+  sizeAcceleration: 0
+  lifeAcceleration: 0
+  sizeVelocity: 0
+  lifeVelocity: 0
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 1024

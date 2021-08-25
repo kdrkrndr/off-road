@@ -6,17 +6,17 @@ public class ExhaustSystem : MonoBehaviour
 {
     
     //[SerializeField] ParticleSystem ps = null;
-    //ParticleSystem.MainModule main = new ParticleSystem.MainModule();
+    ParticleSystem.MainModule main = new ParticleSystem.MainModule();
 
-    /*[Header("Vehicle Properties")]
+    [Header("Vehicle Properties")]
     [SerializeField] private float maxSpeed;
-    [SerializeField] private float maxAcceleration;*/
+    [SerializeField] private float maxAcceleration;
 
-    /*[Header("Ps Properties")]
+    [Header("Ps Properties")]
     [SerializeField] private float sizeAcceleration = 150f;
     [SerializeField] private float lifeAcceleration = 150f;
     [SerializeField] private float sizeVelocity = 15f;
-    [SerializeField] private float lifeVelocity = 15f;*/
+    [SerializeField] private float lifeVelocity = 15f;
 
 
     [Header("Dust Properties")]
@@ -24,11 +24,11 @@ public class ExhaustSystem : MonoBehaviour
     [SerializeField] ParticleSystem dust=null;
 
 
-    //private float velocityFinal = -1f;
-    //private float velocity = -1f;
+    private float velocityFinal = -1f;
+    private float velocity = -1f;
 
-    //private Vector3 pos = new Vector3();
-    //private Vector3 posLast = new Vector3();
+    private Vector3 pos = new Vector3();
+    private Vector3 posLast = new Vector3();
 
     private GameObject player;
     //private GameObject dust;
@@ -38,11 +38,12 @@ public class ExhaustSystem : MonoBehaviour
 
     void Start()
     {
-        // main = ps.main;
+        main = dust.main;
         player = GameObject.FindGameObjectWithTag("Player");
         //dust = ParticleSystem. //GameObject.FindGameObjectWithTag("Dust");
         //dust.SetActive(false);
         //dust= GetComponent<ParticleSystem>();
+        
 
     }
 
@@ -50,38 +51,39 @@ public class ExhaustSystem : MonoBehaviour
     void Update()
     {
         Toz();
-        
-        //posLast = pos;
-        //pos = transform.position;
 
-        //velocity = velocityFinal;
-        //velocityFinal = (pos - posLast).magnitude / Time.deltaTime;
+        posLast = pos;
+        pos = transform.position;
 
-        //float velocityPrcnt = velocityFinal / maxSpeed;
-        //float acceleration = (velocityFinal - velocity) / Time.deltaTime;
-        //float absAccPrct = Mathf.Abs(acceleration / maxAcceleration);
+        velocity = velocityFinal;
+        velocityFinal = (pos - posLast).magnitude / Time.deltaTime;
 
-        //ShowVehicleEffort(velocityPrcnt, absAccPrct);
+        float velocityPrcnt = velocityFinal / maxSpeed;
+        float acceleration = (velocityFinal - velocity) / Time.deltaTime;
+        float absAccPrct = Mathf.Abs(acceleration / maxAcceleration);
+
+        ShowVehicleEffort(velocityPrcnt, absAccPrct);
         //dust = GameObject.FindGameObjectWithTag("Dust");
 
     }
 
-    /*
+    
     private void ShowVehicleEffort(float vMod, float aMod)
     {
         if (aMod>.2f)
         {
-            main.startSpeed = sizeAcceleration + aMod;
-            main.startSize = lifeAcceleration + aMod;
+            main.startSize = sizeAcceleration + aMod;
+            main.startLifetime = lifeAcceleration + aMod;
+            Debug.Log("aMod: "+aMod);
         }
         else
         {
-            main.simulationSpeed = sizeVelocity + vMod;
+            main.startSize = sizeVelocity + vMod;
             main.startLifetime = lifeVelocity + vMod;
         }
-    }*/
+    }
 
-    private void Toz() //arabanın zemin kontrolünü yapıyor
+    public void Toz() //arabanın zemin kontrolünü yapıyor
     {
 
         RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector2.down, 10f, 1 << LayerMask.NameToLayer("kuruzemin"));
@@ -103,6 +105,8 @@ public class ExhaustSystem : MonoBehaviour
             //toz.loop ^= false;
         }
     }
+
+
 
 
 }

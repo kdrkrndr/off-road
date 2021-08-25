@@ -54,11 +54,15 @@ public class CarController : MonoBehaviour
     private GameObject car;
     private float startPointx;
 
+    //ExhaustSystem tozlu;
+
+
     void Awake()
     {
         // Player script'i, instance değişkenine değer olarak kendisini (this) veriyor
         instance = this;
         AudioManager.Instance.PlaySFX(carStartSFX);
+        //tozlu = gameObject.GetComponent<ExhaustSystem>();
     }
 
     void Start()
@@ -69,7 +73,7 @@ public class CarController : MonoBehaviour
         isBrakeBtnDown = false;
         //mudParticle.SetActive(false);
         egzoz = GameObject.Find("EgzozDuman");
-
+        
     }
 
     void Update()
@@ -80,6 +84,7 @@ public class CarController : MonoBehaviour
         EngineStop();
         currentSpeed = Motor.motorSpeed;
         Distance();
+        
     }
 
     public void Movement()
@@ -91,7 +96,8 @@ public class CarController : MonoBehaviour
                 Motor.motorSpeed = (Motor.motorSpeed + AddSpeed*2) + Time.deltaTime;
                 Motor.maxMotorTorque = MotorTorque;
                 wheels[0].motor = Motor;
-                wheels[1].motor = Motor;                
+                wheels[1].motor = Motor;
+                
             }
              else if (isBrakeBtnDown == true && Motor.motorSpeed > MaxBackSpeed && dropPoint.transform.position.x <= behindPoint.transform.position.x) //brake
             {
@@ -130,7 +136,7 @@ public class CarController : MonoBehaviour
     public void RaceBtnDown()
     {
         isRaceBtnDown = true;
-        ActivateMud();
+        ActivateParticle();
         //Debug.Log("Race Button Down");
     }
     public void RaceBtnUp()
@@ -249,8 +255,12 @@ public class CarController : MonoBehaviour
         //Debug.Log(transform.position.x - startPointx);
     }
 
-    public void ActivateMud()
+    public void ActivateParticle()
     {
         //mudParticle.SetActive(true);
+        if (Motor.motorSpeed>0)
+        {
+            
+        }
     }
 }
