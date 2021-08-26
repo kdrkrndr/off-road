@@ -33,7 +33,8 @@ public class ExhaustSystem : MonoBehaviour
     private GameObject player;
     //private GameObject dust;
     //float extraYukseklik = 1f;
-    
+
+    CarController hiz;
 
 
     void Start()
@@ -43,14 +44,20 @@ public class ExhaustSystem : MonoBehaviour
         //dust = ParticleSystem. //GameObject.FindGameObjectWithTag("Dust");
         //dust.SetActive(false);
         //dust= GetComponent<ParticleSystem>();
-        
+        hiz= gameObject.GetComponent<CarController>();
 
     }
 
     
     void Update()
     {
-        Toz();
+       
+        if (hiz.currentSpeed > 35f)
+        {
+             Debug.Log("hız: " + hiz.currentSpeed);
+            Toz();
+        }
+        
 
         posLast = pos;
         pos = transform.position;
