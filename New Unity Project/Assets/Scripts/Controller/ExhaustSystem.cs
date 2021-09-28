@@ -39,7 +39,7 @@ public class ExhaustSystem : MonoBehaviour
 
     void Start()
     {
-        main = dust.main;
+        //main = dust.main;
         player = GameObject.FindGameObjectWithTag("Player");
         //dust = ParticleSystem. //GameObject.FindGameObjectWithTag("Dust");
         //dust.SetActive(false);
