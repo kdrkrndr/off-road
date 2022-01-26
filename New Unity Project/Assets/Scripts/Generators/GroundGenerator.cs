@@ -52,7 +52,7 @@ public class GroundGenerator : MonoBehaviour
     //    Debug.Log("First Ground Number " + currentGroundNumber);
     //}
 
-    /*public void WhichGround() //zeminlerin hangi sırayla yerleştirileceğeini belirler ay
+    public void WhichGround() //zeminlerin hangi sırayla yerleştirileceğeini belirler ay
     {
         switch (currentGroundNumber)
         {
@@ -123,7 +123,8 @@ public class GroundGenerator : MonoBehaviour
             default:
                 break;
         }
-    }*/
+        Debug.Log("groundNumber");
+    }
 
     public void GroundGenerate()//zeminlerin yerleştirilieceği konumları belirler
     {
@@ -131,7 +132,7 @@ public class GroundGenerator : MonoBehaviour
 
         if (transform.position.x < generatePoint.position.x)
         {
-            //WhichGround();
+            WhichGround();
             groundNumber = Random.Range(0, 5);
             transform.position = new Vector3(transform.position.x + groundWidth, transform.position.y, transform.position.z);
             GameObject newPlatform = theGroundPools[groundNumber].GetPooledObject();

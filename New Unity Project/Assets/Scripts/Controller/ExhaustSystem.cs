@@ -19,9 +19,6 @@ public class ExhaustSystem : MonoBehaviour
     [SerializeField] private float lifeVelocity = 15f;
 
 
-    [Header("Dust Properties")]
-    [SerializeField] private LayerMask platformLayerMask;
-    [SerializeField] ParticleSystem dust=null;
 
 
     private float velocityFinal = -1f;
@@ -34,7 +31,7 @@ public class ExhaustSystem : MonoBehaviour
     //private GameObject dust;
     //float extraYukseklik = 1f;
 
-    CarController hiz;
+
 
 
     void Start()
@@ -44,7 +41,6 @@ public class ExhaustSystem : MonoBehaviour
         //dust = ParticleSystem. //GameObject.FindGameObjectWithTag("Dust");
         //dust.SetActive(false);
         //dust= GetComponent<ParticleSystem>();
-        hiz= gameObject.GetComponent<CarController>();
 
     }
 
@@ -52,11 +48,7 @@ public class ExhaustSystem : MonoBehaviour
     void Update()
     {
        
-        if (hiz.currentSpeed > 35f)
-        {
-             Debug.Log("hız: " + hiz.currentSpeed);
-            Toz();
-        }
+
         
 
         posLast = pos;
@@ -69,7 +61,7 @@ public class ExhaustSystem : MonoBehaviour
         float acceleration = (velocityFinal - velocity) / Time.deltaTime;
         float absAccPrct = Mathf.Abs(acceleration / maxAcceleration);
 
-        ShowVehicleEffort(velocityPrcnt, absAccPrct);
+        //ShowVehicleEffort(velocityPrcnt, absAccPrct);
         //dust = GameObject.FindGameObjectWithTag("Dust");
 
     }
@@ -78,8 +70,8 @@ public class ExhaustSystem : MonoBehaviour
     private void ShowVehicleEffort(float vMod, float aMod)
     {
         if (aMod>.2f)
-        {
-            main.startSize = sizeAcceleration + aMod;
+        {            
+            //main.startSize = sizeAcceleration + aMod;
             main.startLifetime = lifeAcceleration + aMod;
             Debug.Log("aMod: "+aMod);
         }
@@ -89,31 +81,5 @@ public class ExhaustSystem : MonoBehaviour
             main.startLifetime = lifeVelocity + vMod;
         }
     }
-
-    public void Toz() //arabanın zemin kontrolünü yapıyor
-    {
-
-        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector2.down, 10f, 1 << LayerMask.NameToLayer("kuruzemin"));
-        
-        Debug.Log(hit.collider);
-        Color rayColor;
-        // If it hits something...
-        if (hit.collider != null)
-        {
-            //rayColor = Color.green;
-            dust.Play();
-            //toz.loop ^= true;
-            Debug.Log("Tozzz");
-        }
-        else
-        {
-            //rayColor = Color.red;
-            dust.Pause();
-            //toz.loop ^= false;
-        }
-    }
-
-
-
 
 }
